@@ -1,0 +1,32 @@
+.dialogs {
+   display: grid;
+   grid-template-columns: 2fr 10fr;
+   column-gap: 20px;
+}
+
+.dialogs__items {
+   padding: 10px;
+   font-size: 20px;
+   font-weight: 400;
+   list-style: none;
+}
+
+.dialogs__item {
+   text-decoration: none;
+   color: black;
+}
+
+.dialogs__item_active {
+   color: #0f6177;
+   font-weight: 500;
+}
+
+.dialogs__messages {
+   padding: 10px;
+   font-size: 20px;
+   font-weight: 400;
+   list-style: none;
+}
+
+.dialogs__message {
+}

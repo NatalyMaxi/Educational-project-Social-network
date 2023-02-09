@@ -1,7 +1,7 @@
-import React from "react";
-import classes from "./Profile.module.css";
-import blackcat from "../../images/blackCat-min.png";
-import MyPosts from "./MyPosts/MyPosts";
+import React from 'react';
+import classes from './Profile.module.css';
+import blackcat from '../../images/blackCat-min.png';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
   return (
@@ -10,7 +10,7 @@ const Profile = () => {
         <img
           className={classes.profile__img}
           src={blackcat}
-          alt="Картинка черного кота"
+          alt='Картинка черного кота'
         />
       </div>
       <div className={classes.profile__post}>ava + description</div>
