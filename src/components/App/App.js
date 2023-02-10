@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 import Header from '../Header/Header';
 import Navbar from '../Navbar/Navbar';
-import Dialogs from '../Dialogs/Dialogs';
+import Messages from '../Messages/Messages';
 import Profile from '../Profile/Profile';
 import News from '../News/News';
 import Music from '../Music/Music';
@@ -18,7 +18,7 @@ const App = () => {
         <div className='page__content'>
           <Routes>
             <Route path='/profile' element={<Profile />} />
-            <Route path='/dialogs/*' element={<Dialogs />} />
+            <Route path='/dialogs/*' element={<Messages />} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />

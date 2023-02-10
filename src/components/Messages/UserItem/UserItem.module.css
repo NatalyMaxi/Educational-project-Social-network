@@ -1,0 +1,9 @@
+.user__item {
+   text-decoration: none;
+   color: black;
+}
+
+.user__item_active {
+   color: #0f6177;
+   font-weight: 500;
+}
