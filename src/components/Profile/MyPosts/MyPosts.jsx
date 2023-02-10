@@ -2,6 +2,13 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
+let postData = [
+  { id: 1, message: 'Hi', likesCount: '3' },
+  { id: 2, message: 'Hi', likesCount: '23' },
+  { id: 3, message: 'Hi', likesCount: '3' },
+  { id: 4, message: 'Hi', likesCount: '0' },
+]
+
 const MyPosts = () => {
   return (
     <div className={classes.myPosts}>
