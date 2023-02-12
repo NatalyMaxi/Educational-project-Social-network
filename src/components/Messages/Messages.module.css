@@ -5,15 +5,23 @@
 }
 
 .messages__users {
-   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
    font-size: 20px;
    font-weight: 400;
    list-style: none;
+   margin: 0;
+   padding: 10px 0 0 10px;
 }
 
 .messages__dialogs {
-   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
    font-size: 20px;
    font-weight: 400;
    list-style: none;
+   margin: 0;
+   padding: 10px 0 0 0;
 }

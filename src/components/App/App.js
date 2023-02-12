@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import Header from '../Header/Header';
 import Navbar from '../Navbar/Navbar';
@@ -12,7 +12,6 @@ import Settings from '../Settings/Settings'
 const App = (props) => {
 
   return (
-    <BrowserRouter>
       <div className='page'>
         <Header />
         <Navbar />
@@ -20,7 +19,9 @@ const App = (props) => {
           <Routes>
             <Route path='/profile'
               element={<Profile
-                state={props.state.profilePage} />}
+                state={props.state.profilePage}
+              addPost={props.addPost}
+              />}
             />
             <Route path='/dialogs/*'
               element={<Messages
@@ -39,7 +40,6 @@ const App = (props) => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
   )
 }
 

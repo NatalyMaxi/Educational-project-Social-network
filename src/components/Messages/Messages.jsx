@@ -7,7 +7,7 @@ const Messages = (props) => {
 
    let usrsElements = props.state.users.map((user) =>
       <UserItem name={user.name} id={user.id} />)
-   
+
    let messagesElements = props.state.messages.map((msg) =>
       <Dialog message={msg.message} id={msg.id} />)
 
@@ -19,7 +19,6 @@ const Messages = (props) => {
 
          <ul className={classes.messages__dialogs}>
             {messagesElements}
-
          </ul>
       </div>
    );
