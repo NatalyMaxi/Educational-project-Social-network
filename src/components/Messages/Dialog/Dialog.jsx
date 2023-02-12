@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./Dialog.module.css";
 
-
 const Dialog = (props) => {
 
    return (
