@@ -5,9 +5,12 @@ import Dialog from "./Dialog/Dialog";
 
 const Messages = (props) => {
 
-   let usrsElements = props.users.map((user) => <UserItem name={user.name} id={user.id} />)
-   let messagesElements = props.messages.map((msg) => <Dialog message={msg.message} id={msg.id} />)
+   let usrsElements = props.state.users.map((user) =>
+      <UserItem name={user.name} id={user.id} />)
    
+   let messagesElements = props.state.messages.map((msg) =>
+      <Dialog message={msg.message} id={msg.id} />)
+
    return (
       <div className={classes.messages}>
          <ul className={classes.messages__users}>
