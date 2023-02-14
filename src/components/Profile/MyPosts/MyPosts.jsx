@@ -15,18 +15,36 @@ const MyPosts = (props) => {
    * 
    */
   let addPost = () => {
+    props.addPost()
+  }
+
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.addPost(text)
+    props.updateNewPostText(text)
   }
 
   return (
     <div className={classes.myPosts}>
       <div className={classes.myPosts__item}>
         <h2 className={classes.myPosts__title}>My Post</h2>
-        <textarea className={classes.myPosts__input} ref={newPostElement} placeholder='Enter a message' />
-        <button className={classes.myPosts__button} onClick={addPost}>Add post</button>
+
+        <textarea
+          className={classes.myPosts__input}
+          ref={newPostElement}
+          placeholder='Enter a message'
+          value={props.newPostText}
+          onChange={onPostChange}
+        />
+
+        <button
+          className={classes.myPosts__button}
+          onClick={addPost}>
+          Add post
+        </button>
+
       </div>
-      <div className={classes.posts}>
+      <div
+        className={classes.posts}>
         {postsElements}
       </div>
     </div>
