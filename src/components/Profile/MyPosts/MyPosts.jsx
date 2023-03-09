@@ -1,27 +1,26 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostCreator, updateNewPostTextCreator } from '../../../redux/profile-reducer'
 
 const MyPosts = (props) => {
 
   /**Отрисовываем посты
    *
    */
-  let postsElements = props.posts.map((post) => <Post message={post.message} likesCount={post.likesCount} />)
+  let postsElements = props.profilePage.posts.map((post) => <Post message={post.message} likesCount={post.likesCount} />)
 
   let newPostElement = React.createRef();
 
   /** добавим пост по клику на кнопку
    * 
    */
-  let addPost = () => {
-    props.dispatch(addPostCreator())
+  let onAddPost = () => {
+    props.addPost()
   }
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextCreator(text))
+    props.updateNewPostText(text)
   }
 
   return (
@@ -33,13 +32,13 @@ const MyPosts = (props) => {
           className={classes.myPosts__input}
           ref={newPostElement}
           placeholder='Enter a message'
-          value={props.newPostText}
+          value={props.profilePage.newPostText}
           onChange={onPostChange}
         />
 
         <button
           className={classes.myPosts__button}
-          onClick={addPost}>
+          onClick={onAddPost}>
           Add post
         </button>
 
