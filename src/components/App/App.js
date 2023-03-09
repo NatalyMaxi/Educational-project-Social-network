@@ -26,6 +26,7 @@ const App = (props) => {
             <Route path='/dialogs/*'
               element={<Messages
                 state={props.state.messagesPage}
+                dispatch={props.dispatch}
               />}
             />
             <Route path='/news'
