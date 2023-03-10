@@ -4,16 +4,10 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-  /**Отрисовываем посты
-   *
-   */
-  let postsElements = props.profilePage.posts.map((post) => <Post message={post.message} likesCount={post.likesCount} />)
+  let postsElements = props.posts.map((post) => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)
 
   let newPostElement = React.createRef();
 
-  /** добавим пост по клику на кнопку
-   * 
-   */
   let onAddPost = () => {
     props.addPost()
   }
@@ -32,7 +26,7 @@ const MyPosts = (props) => {
           className={classes.myPosts__input}
           ref={newPostElement}
           placeholder='Enter a message'
-          value={props.profilePage.newPostText}
+          value={props.newPostText}
           onChange={onPostChange}
         />
 

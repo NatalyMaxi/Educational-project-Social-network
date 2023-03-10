@@ -1,17 +1,14 @@
-import React from "react";
-import classes from "./Messages.module.css";
-import UserItem from "./UserItem/UserItem";
-import Dialog from "./Dialog/Dialog";
+import React from 'react';
+import classes from './Messages.module.css';
+import UserItem from './UserItem/UserItem';
+import Dialog from './Dialog/Dialog';
 
 const Messages = (props) => {
-
    let usrsElements = props.messagesPage.users.map((user) =>
-      <UserItem name={user.name} id={user.id} />)
+      <UserItem name={user.name} id={user.id} key={user.id} />)
 
    let messagesElements = props.messagesPage.messages.map((msg) =>
-      <Dialog message={msg.message} id={msg.id} />)
-
-   let newMessageText = props.messagesPage.newMessageText;
+      <Dialog message={msg.message} id={msg.id} key={msg.id} />)
 
    let onSendMessageClick = () => {
       props.sendMessage()
@@ -34,7 +31,7 @@ const Messages = (props) => {
                <div>
                   <textarea
                      placeholder='Enter your message'
-                     value={newMessageText}
+                     value={props.messagesPage.newMessageText}
                      onChange={onNewMessageChange}>
                   </textarea>
                </div>
