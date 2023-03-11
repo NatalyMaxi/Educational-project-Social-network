@@ -8,6 +8,7 @@ import News from '../News/News';
 import Music from '../Music/Music';
 import Settings from '../Settings/Settings'
 import MessageContainer from '../Messages/MessagesContainer';
+import UsersContainer from '../Users/UsersContainer';
 
 const App = () => {
 
@@ -33,6 +34,9 @@ const App = () => {
           />
           <Route path='/settings'
             element={<Settings />}
+          />
+          <Route path='/users'
+            element={<UsersContainer />}
           />
         </Routes>
       </div>
