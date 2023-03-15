@@ -125,6 +125,6 @@
    cursor: pointer;
 }
 
-.users__page_type_current {
+.users__page_active {
    font-weight: 800;
 }

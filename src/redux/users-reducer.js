@@ -11,7 +11,7 @@ let initialState = {
       // { id: 3, photoUrl: 'https://i.pinimg.com/originals/6d/47/05/6d4705c7c8fb464de36cab7e4c0f6561.jpg', followed: true, fullName: 'Зевс', status: 'I am a cat', location: { city: 'Тюмень', country: 'Россия' } },
       // { id: 4, photoUrl: 'https://www.fonstola.ru/images/201212/fonstola.ru_84796.jpg', followed: false, fullName: 'Валера', status: 'I am ...', location: { city: 'Мадрид', country: 'Испания' } },
    ],
-   pageSize: 100,
+   pageSize: 5,
    totalUsersCount: 0,
    currentPage: 1,
 }
