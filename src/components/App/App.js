@@ -3,12 +3,12 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import Header from '../Header/Header';
 import Navbar from '../Navbar/Navbar';
-import Profile from '../Profile/Profile';
 import News from '../News/News';
 import Music from '../Music/Music';
 import Settings from '../Settings/Settings'
 import MessageContainer from '../Messages/MessagesContainer';
 import UsersContainer from '../Users/UsersContainer';
+import ProfileContainer from '../Profile/ProfileContainer';
 
 const App = () => {
 
@@ -18,9 +18,8 @@ const App = () => {
       <Navbar />
       <div className='page__content'>
         <Routes>
-          <Route path='/profile'
-            element={<Profile
-            />}
+          <Route path='/profile/*'
+            element={<ProfileContainer/>}
           />
           <Route path='/dialogs/*'
             element={<MessageContainer

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Users.module.css';
 import avatar from '../../images/avatar.jpg';
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -14,7 +15,7 @@ const Users = (props) => {
    let beginningSlicedPages = ((newCurrentPage - 5) < 0) ? 0 : newCurrentPage - 5;
    let endSlicedPages = newCurrentPage + 5;
    let slicedPages = pages.slice(beginningSlicedPages, endSlicedPages);
-   
+
    return (
       <section className={classes.users}>
 
@@ -39,11 +40,13 @@ const Users = (props) => {
                props.users.map((user) => {
                   return (
                      <li className={classes.users__item} key={user.id} >
-                        <img
-                           className={classes.users__avatar}
-                           src={user.photos.small != null ? user.photos.small : avatar}
-                           alt='аватар'
-                        />
+                        <NavLink to={'/profile/' + user.id}>
+                           <img
+                              className={classes.users__avatar}
+                              src={user.photos.small != null ? user.photos.small : avatar}
+                              alt='аватар'
+                           />
+                        </NavLink>
                         <div className={classes.users__status}>
                            <p className={classes.users__text}>{user.status != null ? user.status : 'I am...'}</p>
                         </div>
@@ -59,7 +62,7 @@ const Users = (props) => {
                               ?
                               <button
                                  className={classes.users__button}
-                                 onClick={() => {props.unfollow(user.id) }}>
+                                 onClick={() => { props.unfollow(user.id) }}>
                                  Follow
                               </button>
                               :
