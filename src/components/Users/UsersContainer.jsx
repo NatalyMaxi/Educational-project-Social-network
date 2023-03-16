@@ -1,4 +1,4 @@
-import { followCreator, unfollowCreator, setUsersCreator, setCurrentPageCreator, setUsersTotalCountCreator, toggleIsLoadingCreator } from '../../redux/users-reducer';
+import { follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsLoading } from '../../redux/users-reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Users from './Users';
@@ -6,14 +6,13 @@ import Preloader from '../Preloader/Preloader.js';
 import React from 'react';
 
 class UsersContainer extends React.Component {
-
    componentDidMount() {
       this.props.toggleIsLoading(true)
       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
          .then(response => {
             this.props.toggleIsLoading(false)
             this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.setUsersTotalCount(response.data.totalCount)
          })
    }
 
@@ -26,7 +25,9 @@ class UsersContainer extends React.Component {
             this.props.setUsers(response.data.items)
          })
    }
+
    render() {
+
       return <>
          {
             this.props.isLoading ? (<Preloader />) : (
@@ -55,27 +56,5 @@ let mapStateToProps = (state) => {
    }
 }
 
-let mapDispatchToProps = (dispatch) => {
-   return {
-      follow: (userId) => {
-         dispatch(followCreator(userId))
-      },
-      unfollow: (userId) => {
-         dispatch(unfollowCreator(userId))
-      },
-      setUsers: (users) => {
-         dispatch(setUsersCreator(users))
-      },
-      setCurrentPage: (pageNamber) => {
-         dispatch(setCurrentPageCreator(pageNamber))
-      },
-      setTotalUsersCount: (totalCount) => {
-         dispatch(setUsersTotalCountCreator(totalCount))
-      },
-      toggleIsLoading: (isLoading) => {
-         dispatch(toggleIsLoadingCreator(isLoading))
-      }
-   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsLoading, }
+)(UsersContainer)
