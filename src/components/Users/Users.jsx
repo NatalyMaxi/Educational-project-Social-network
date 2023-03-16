@@ -14,6 +14,7 @@ const Users = (props) => {
    let beginningSlicedPages = ((newCurrentPage - 5) < 0) ? 0 : newCurrentPage - 5;
    let endSlicedPages = newCurrentPage + 5;
    let slicedPages = pages.slice(beginningSlicedPages, endSlicedPages);
+   
    return (
       <section className={classes.users}>
 
