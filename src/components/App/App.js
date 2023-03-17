@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'
 import './App.css';
-import Header from '../Header/Header';
+import HeaderContainer from '../Header/HeaderContainer';
 import Navbar from '../Navbar/Navbar';
 import News from '../News/News';
 import Music from '../Music/Music';
@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <div className='page'>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className='page__content'>
         <Routes>
