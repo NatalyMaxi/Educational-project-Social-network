@@ -3,19 +3,16 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_LOADING = 'TOGGLE-IS-LOADING'
+const TOGGLE_IS_LOADING = 'TOGGLE-IS-LOADING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
 
 let initialState = {
-   users: [
-      // { id: 1, photoUrl: 'https://webmg.ru/wp-content/uploads/2022/10/i-145-27.jpeg', followed: true, fullName: 'Илюсик', status: 'I am a boss', location: { city: 'Тюмень', country: 'Россия' } },
-      // { id: 2, photoUrl: 'https://webmg.ru/wp-content/uploads/2022/05/1625736517_12-kartinkin-com-p-kotyata-anime-anime-krasivo-14.jpg', followed: true, fullName: 'Натусик', status: 'I am a macovka', location: { city: 'Тюмень', country: 'Россия' } },
-      // { id: 3, photoUrl: 'https://i.pinimg.com/originals/6d/47/05/6d4705c7c8fb464de36cab7e4c0f6561.jpg', followed: true, fullName: 'Зевс', status: 'I am a cat', location: { city: 'Тюмень', country: 'Россия' } },
-      // { id: 4, photoUrl: 'https://www.fonstola.ru/images/201212/fonstola.ru_84796.jpg', followed: false, fullName: 'Валера', status: 'I am ...', location: { city: 'Мадрид', country: 'Испания' } },
-   ],
+   users: [],
    pageSize: 5,
    totalUsersCount: 0,
    currentPage: 1,
    isLoading: false,
+   followingInProgress: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -66,6 +63,14 @@ const usersReducer = (state = initialState, action) => {
             isLoading: action.isLoading
          }
       }
+      case TOGGLE_IS_FOLLOWING_PROGRESS: {
+         return {
+            ...state,
+            followingInProgress: action.followingInProgress ?
+               [...state.followingInProgress, action.userId] :
+               state.followingInProgress.filter(id => id !== action.userId)
+         }
+      }
       default:
          return state;
    }
@@ -77,5 +82,6 @@ export const setUsers = (users) => ({ type: SET_USERS, users })
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
 export const toggleIsLoading = (isLoading) => ({ type: TOGGLE_IS_LOADING, isLoading })
+export const toggleFollowingProgress = (followingInProgress, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress, userId })
 
 export default usersReducer;
