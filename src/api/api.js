@@ -7,7 +7,16 @@ const instance = axios.create({
 
 })
 
-export const usersAPI = {getUsers(currentPage = 1, pageSize = 10){ // по умолчанию присваиваем currentPage = 1 и для pageSize = 10
+export const usersAPI = {
+   getUsers(currentPage = 1, pageSize = 10) { // по умолчанию присваиваем currentPage = 1 и для pageSize = 10
    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
       .then(response => response.data)
-}}
+   },
+   follow(userId) {
+      return instance.post(`follow/${userId}`, {})
+   },
+   unfollow(userId) {
+      return instance.delete(`follow/${userId}`)
+}
+
+}
