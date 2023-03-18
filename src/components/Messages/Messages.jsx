@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Messages.module.css';
 import UserItem from './UserItem/UserItem';
 import Dialog from './Dialog/Dialog';
+import { Navigate } from 'react-router-dom';
 
 const Messages = (props) => {
    let usrsElements = props.messagesPage.users.map((user) =>
@@ -18,6 +19,10 @@ const Messages = (props) => {
       let text = evt.target.value;
       props.updateMessageText(text)
    }
+
+   if (!props.isAuth) {
+      return <Navigate to={'/login'} />
+}
 
    return (
       <div className={classes.messages}>
