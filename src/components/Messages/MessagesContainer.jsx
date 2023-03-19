@@ -10,6 +10,11 @@ let mapStateToProps = (state) => {
    }
 }
 
+export default compose(
+   connect(mapStateToProps, { sendMessage, updateMessageText, }),
+   withAuthRedirect
+)(Messages);
+
 // compose(
 //    connect(mapStateToProps, { sendMessage, updateMessageText, }),
 //    withAuthRedirect
@@ -18,8 +23,3 @@ let mapStateToProps = (state) => {
 // let AuthRedirectComponent = withAuthRedirect(Messages)
 
 // const MessageContainer = connect(mapStateToProps, { sendMessage, updateMessageText, })(AuthRedirectComponent)
-
-export default compose(
-   connect(mapStateToProps, { sendMessage, updateMessageText, }),
-   withAuthRedirect
-)(Messages);

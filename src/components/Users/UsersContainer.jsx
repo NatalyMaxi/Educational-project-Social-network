@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import Users from './Users';
 import Preloader from '../Preloader/Preloader.js';
 import { withAuthRedirect } from '../hoc/withAurhRedirect'
-
-
+import { compose } from 'redux';
 class UsersContainer extends React.Component {
    componentDidMount() {
       this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -17,7 +16,6 @@ class UsersContainer extends React.Component {
    }
 
    render() {
-
       return <>
          {
             this.props.isLoading ? (<Preloader />) : (
@@ -48,4 +46,9 @@ let mapStateToProps = (state) => {
    }
 }
 
-export default withAuthRedirect (connect(mapStateToProps, { follow, unfollow, getUsers })(UsersContainer))
+export default compose(
+   withAuthRedirect,
+   connect(mapStateToProps, { follow, unfollow, getUsers })
+)(UsersContainer)
+
+// export default withAuthRedirect (connect(mapStateToProps, { follow, unfollow, getUsers })(UsersContainer))
