@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
-import blackcat from '../../../images/blackCat-min.png';
+//import blackcat from '../../../images/blackCat-min.png';
 import Preloader from '../../Preloader/Preloader';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -10,15 +11,17 @@ const ProfileInfo = (props) => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <img
           className={classes.profileInfo__img}
           src={blackcat}
           alt='Картинка черного кота'
         />
-      </div>
+      </div> */}
       <div className={classes.profileInfo__description}>
-        <img src={ props.profile.photos.large} alt='Фотография' />ava + description</div>
+        <img src={props.profile.photos.large} alt='Фотография' />
+        <ProfileStatus status={ 'helloo'} />
+      </div>
     </>
 
   );
