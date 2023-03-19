@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Profile from './Profile';
 import { getUserProfile } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
-import {withAuthRedirect} from '../hoc/withAurhRedirect'
+//import {withAuthRedirect} from '../hoc/withAurhRedirect'
 import { compose } from 'redux';
 
 export function withRouter(Children) {
