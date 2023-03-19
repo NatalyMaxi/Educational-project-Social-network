@@ -21,7 +21,7 @@ const Messages = (props) => {
    }
 
    if (!props.isAuth) {
-      return <Navigate to={'/login'} />
+      return <Navigate to='/login'/>
 }
 
    return (

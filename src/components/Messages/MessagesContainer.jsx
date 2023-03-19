@@ -1,14 +1,25 @@
 import { sendMessage, updateMessageText } from '../../redux/messages-reducer';
 import Messages from './Messages';
 import { connect } from 'react-redux';
+import { withAuthRedirect } from '../hoc/withAurhRedirect'
+import { compose } from 'redux';
 
 let mapStateToProps = (state) => {
    return {
       messagesPage: state.messagesPage,
-      isAuth: state.auth.isAuth
    }
 }
 
-const MessageContainer = connect(mapStateToProps, { sendMessage, updateMessageText,})(Messages)
+// compose(
+//    connect(mapStateToProps, { sendMessage, updateMessageText, }),
+//    withAuthRedirect
+// )(Messages)
 
-export default MessageContainer;
+// let AuthRedirectComponent = withAuthRedirect(Messages)
+
+// const MessageContainer = connect(mapStateToProps, { sendMessage, updateMessageText, })(AuthRedirectComponent)
+
+export default compose(
+   connect(mapStateToProps, { sendMessage, updateMessageText, }),
+   withAuthRedirect
+)(Messages);
