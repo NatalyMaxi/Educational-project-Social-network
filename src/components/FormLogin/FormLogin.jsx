@@ -29,6 +29,9 @@ const LoginForm = (props) => {
                component={Input}
             /> remember me
          </div>
+         {
+            props.error && <div className={classes.formError}>{props.error}</div>
+         }
          <button>Залогиниться</button>
       </form>
    );
