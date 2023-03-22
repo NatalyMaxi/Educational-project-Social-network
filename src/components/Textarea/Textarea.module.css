@@ -1,0 +1,38 @@
+.textarea {
+   height: 29px;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 16px;
+   color: #ffffff;
+   background: #0f6177;
+   border-radius: 5px;
+   border: none;
+   box-sizing: border-box;
+   padding: 5px 5px 2px 10px;
+}
+
+.textareaError {
+border: solid red 1px;
+}
+
+.textarea:focus {
+   outline: none;
+   box-shadow: 2px 2px 15px #0f6177;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+::-moz-placeholder {
+   color: white;
+} /* Firefox 19+ */
+:-moz-placeholder {
+   color: white;
+} /* Firefox 18- */
+:-ms-input-placeholder {
+   color: white;
+}
+
+.error {
+   border: solid red 1px;
+}

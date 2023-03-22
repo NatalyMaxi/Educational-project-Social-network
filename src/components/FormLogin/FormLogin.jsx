@@ -1,6 +1,10 @@
 import React from 'react';
 import classes from './FormLogin.module.css';
 import { Field } from 'redux-form';
+import Input from '../Input/Input';
+import { reqired, maxLengthCreator } from '../../utils/validators/validator';
+
+const maxLength30 = maxLengthCreator(30)
 
 const LoginForm = (props) => {
 
@@ -9,18 +13,20 @@ const LoginForm = (props) => {
          <Field
             placeholder='login'
             name={'login'}
-            component={'input'}
+            component={Input}
+            validate={[reqired, maxLength30]}
          />
          <Field
             placeholder='password'
             name={'password'}
-            component={'input'}
+            component={Input}
+            validate={[reqired, maxLength30]}
          />
          <div>
             <Field
                type={'checkbox'}
                name={'rememberMe'}
-               component={'input'}
+               component={Input}
             /> remember me
          </div>
          <button>Login</button>

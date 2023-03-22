@@ -3,3 +3,21 @@
    flex-direction: column;
    width: 300px;
 }
+
+.button {
+   width: 130px;
+   height: 25px;
+   padding: 2px;
+   margin-bottom: 20px;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 17px;
+   background: white;
+   text-align: center;
+   border-color: #0f6177;
+   color: black;
+   border-radius: 5px;
+   box-shadow: 2px 2px 10px #0f6177;
+   text-shadow: 1px 1px 4px #0f6177, 0 0 1em #0f6177, 0 0 0.2em #0f6177;
+   cursor: pointer;
+}
