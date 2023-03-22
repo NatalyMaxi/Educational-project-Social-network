@@ -2,25 +2,25 @@ import React from 'react';
 import classes from './FormLogin.module.css';
 import { Field } from 'redux-form';
 import Input from '../Input/Input';
-import { reqired, maxLengthCreator } from '../../utils/validators/validator';
-
-const maxLength30 = maxLengthCreator(30)
+import { reqired } from '../../utils/validators/validator';
 
 const LoginForm = (props) => {
 
    return (
       <form className={classes.form} onSubmit={props.handleSubmit}>
          <Field
-            placeholder='login'
-            name={'login'}
+            placeholder='Email'
+            name={'email'}
+            //type={'email'}
             component={Input}
-            validate={[reqired, maxLength30]}
+            validate={[reqired]}
          />
          <Field
-            placeholder='password'
+            placeholder='Password'
             name={'password'}
+            type={'password'}
             component={Input}
-            validate={[reqired, maxLength30]}
+            validate={[reqired]}
          />
          <div>
             <Field
@@ -29,7 +29,7 @@ const LoginForm = (props) => {
                component={Input}
             /> remember me
          </div>
-         <button>Login</button>
+         <button>Залогиниться</button>
       </form>
    );
 };

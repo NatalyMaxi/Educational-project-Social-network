@@ -3,8 +3,6 @@ import axios from 'axios';
 const instance = axios.create({
    withCredentials: true,
    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-   headers: '2afe739f-c21f-4fb5-8d0e-e1a467d3c73b',
-
 })
 
 export const usersAPI = {
@@ -25,13 +23,6 @@ export const usersAPI = {
 
 }
 
-export const authAPI = {
-   me() {
-      return instance.get(`auth/me`)
-   },
-
-}
-
 export const profileAPI = {
    getProfile(userId) {
       return instance.get(`profile/` + userId)
@@ -42,5 +33,17 @@ export const profileAPI = {
    updateStatus(status) {
       return instance.put(`profile/status`, { status: status } )
    }
+}
+
+export const authAPI = {
+   me() {
+      return instance.get(`auth/me`)
+   },
+   login(email, password, rememberMe = false) {
+      return instance.post(`auth/login`, { email, password, rememberMe })
+   },
+   logout() {
+      return instance.delete(`auth/login`)
+   },
 
 }
