@@ -9,7 +9,7 @@ import Settings from '../Settings/Settings'
 import MessageContainer from '../Messages/MessagesContainer';
 import UsersContainer from '../Users/UsersContainer';
 import ProfileContainer from '../Profile/ProfileContainer';
-import Login from './Login/Login';
+import Login from '../Login/Login';
 
 const App = () => {
 
@@ -39,7 +39,7 @@ const App = () => {
             element={<UsersContainer />}
           />
           <Route path='/login'
-            element={<Login/>}
+            element={<Login />}
           />
         </Routes>
       </div>
