@@ -1,65 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.css';
 
-class ProfileStatus extends React.Component {
+const ProfileStatus = (props) => {
+   const [editMode, setEditMode] = useState(false);
+   const [status, setStatus] = useState(props.status);
 
-   state = {
-      editMode: false,
-      status: this.props.status,
-   }
+   useEffect(() => {
+setStatus(props.status)
+   }, [props.status])
 
-   activateEditMode = () => {
-      console.log(this.state.editMode) // false
-      this.setState({ editMode: true }) //setState асинхронен, сначала выполнятся консоли, потом стэйт поменяется
-      console.log(this.state.editMode) // false
-   }
+   const activateEditMode = () => {
+      setEditMode(true);
+   };
 
-   deActivateEditMode = () => {
-      this.setState({
-         editMode: false
-      })
-      this.props.updateStatus(this.state.status)
-   }
+   const deActivateEditMode = () => {
+      setEditMode(false);
+      props.updateStatus(status);
+   };
 
-   onStatusChange = (e) => {
-      this.setState({
-         status: e.currentTarget.value
-      })
-   }
+   const onStatusChange = (e) => {
+      setStatus(e.currentTarget.value);
+   };
 
-   componentDidUpdate(prevProps, prevState) {
-      if (prevProps.status !== this.props.status) {
-         this.setState({
-            status: this.props.status,
-         })
-}
-   }
-
-   render() {
-      return (<div className={classes.status}>
-         {
-            !this.state.editMode ?
-               (
-                  <div>
-                     <span
-                        onDoubleClick={this.activateEditMode}>{this.props.status || 'Введите статус'}</span>
-                  </div>
-               ) :
-               (
-                  <div>
-                     <input
-                        type="text"
-                        autoFocus={true}
-                        onBlur={this.deActivateEditMode}
-                        value={this.state.status}
-                        onChange={this.onStatusChange}
-                     /></div>
-               )
-         }
-      </div>);
-   }
-
-}
+   return <div className={classes.status}>
+      {!editMode ? <div>
+         <span onDoubleClick={activateEditMode}>{props.status || 'Введите статус'}</span>
+      </div> : <div>
+         <input type="text" autoFocus={true} onBlur={deActivateEditMode} value={status} onChange={onStatusChange} /></div>}
+   </div>;
+};
 
 export default ProfileStatus;
 
