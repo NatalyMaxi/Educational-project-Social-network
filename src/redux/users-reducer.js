@@ -88,15 +88,15 @@ export const toggleFollowingProgress = (followingInProgress, userId) => ({ type:
 
 // thunk
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
    return (dispatch) => {
       dispatch(toggleIsLoading(true));
-   usersAPI.getUsers(currentPage, pageSize)
+   usersAPI.getUsers(page, pageSize)
       .then(data => {
          dispatch(toggleIsLoading(false))
          dispatch(setUsers(data.items))
          dispatch(setUsersTotalCount(data.totalCount))
-         dispatch(setCurrentPage(currentPage))
+         dispatch(setCurrentPage(page))
       })}
 }
 
