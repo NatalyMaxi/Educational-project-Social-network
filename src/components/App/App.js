@@ -7,40 +7,30 @@ import HeaderContainer from '../Header/HeaderContainer';
 import Navbar from '../Navbar/Navbar';
 import News from '../News/News';
 import Music from '../Music/Music';
-import Settings from '../Settings/Settings'
+import Settings from '../Settings/Settings';
 import MessageContainer from '../Messages/MessagesContainer';
 import UsersContainer from '../Users/UsersContainer';
 import ProfileContainer from '../Profile/ProfileContainer';
 import Login from '../Login/Login';
 import { initializeApp } from '../../redux/app-reducer';
-import { useParams } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
-
-export function withRouter(Children) {
-  return (props) => {
-
-    const match = { params: useParams() };
-    return <Children {...props} match={match} />
-  }
-}
-
+import { withRouter } from '../hoc/withRouter';
 class App extends React.Component {
-
   componentDidMount() {
     this.props.initializeApp();
   }
 
   render() {
+    if (!this.props.initialized) { return <Preloader /> }
 
-    if (!this.props.initialized) {return <Preloader/>}
-
-    return (<div className='page'>
+    return (
+      <div className='page'>
       <HeaderContainer />
       <Navbar />
       <div className='page__content'>
         <Routes>
           <Route path='/profile' element={<ProfileContainer />}>
-            <Route path=":userId" element={<ProfileContainer />} />
+            <Route path=':userId' element={<ProfileContainer />} />
           </Route>
           <Route path='/dialogs/*' element={<MessageContainer />} />
           <Route path='/news' element={<News />} />

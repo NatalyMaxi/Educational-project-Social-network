@@ -7,7 +7,6 @@ import Textarea from '../Textarea/Textarea';
 const maxLength30 = maxLengthCreator(30)
 
 const FormAddPost = (props) => {
-console.log(props.placeholder)
    return (
       <form className={classes.form} onSubmit={props.handleSubmit}>
          <Field

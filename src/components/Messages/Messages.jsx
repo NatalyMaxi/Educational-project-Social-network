@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Messages.module.css';
 import UserItem from './UserItem/UserItem';
 import Dialog from './Dialog/Dialog';
-import { Navigate } from 'react-router-dom';
 import FormAddMessage from '../FormAddMessage/FormAddMessage';
 import { reduxForm } from 'redux-form';
 
@@ -16,10 +15,6 @@ const Messages = (props) => {
 
    let messagesElements = props.messagesPage.messages.map((msg) =>
       <Dialog message={msg.message} id={msg.id} key={msg.id} />)
-
-   if (!props.isAuth) {
-      return <Navigate to='/login' />
-   }
 
    const onSubmit = (values) => {
       props.sendMessage(values.newMessageText)
