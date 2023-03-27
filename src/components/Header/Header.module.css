@@ -1,7 +1,17 @@
 .logo {
    width: 100px;
 }
+
 .header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
    grid-area: header;
    background-color: #0f6177;
+}
+
+.header__login {
+   text-decoration: none;
+   color: white;
+   margin-right: 30px;
 }

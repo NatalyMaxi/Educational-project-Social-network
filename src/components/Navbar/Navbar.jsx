@@ -21,6 +21,9 @@ const Navbar = () => {
                 <li className={classes.nav__item}>
                     <NavLink to='/settings' className={navData => navData.isActive ? classes.nav__link_active : classes.nav__link}>Settings</NavLink>
                 </li>
+                <li className={classes.nav__item}>
+                    <NavLink to='/users' className={navData => navData.isActive ? classes.nav__link_active : classes.nav__link}>Users</NavLink>
+                </li>
             </ul>
 
         </nav>
