@@ -1,0 +1,21 @@
+
+.pages {
+   display: flex;
+   gap: 10px;
+   list-style: none;
+   flex-wrap: wrap;
+}
+
+.page {
+   display: flex;
+   width: 20px;
+   height: 20px;
+   font-weight: 500;
+   font-size: 17px;
+   line-height: 17px;
+   cursor: pointer;
+}
+
+.page_active {
+   font-weight: 800;
+}

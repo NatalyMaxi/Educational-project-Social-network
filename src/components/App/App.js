@@ -42,7 +42,6 @@ class App extends React.Component {
       </div>
     </div>);
   }
-
 }
 
 let mapStateToProps = (state) => {

@@ -2,39 +2,18 @@ import React from 'react';
 import classes from './Users.module.css';
 import avatar from '../../images/avatar.jpg';
 import { NavLink } from 'react-router-dom';
+import Paginator from '../Paginator/Paginator';
 
 const Users = (props) => {
-   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
-   let pages = [];
-   for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i)
-   }
-
-   let newCurrentPage = props.currentPage;
-   let beginningSlicedPages = ((newCurrentPage - 5) < 0) ? 0 : newCurrentPage - 5;
-   let endSlicedPages = newCurrentPage + 5;
-   let slicedPages = pages.slice(beginningSlicedPages, endSlicedPages);
 
    return (
       <section className={classes.users}>
-
-         <div className={classes.users__pages}>
-            {slicedPages.map((page) => {
-               return (
-                  <span
-                     key={page}
-                     className={props.currentPage === page ?
-                        `${classes.users__page} ${classes.users__page_active}` :
-                        `${classes.users__page} `}
-                     onClick={(evt) => { props.onPageChanget(page) }}
-                  >
-                     {page}
-                  </span>
-               )
-            })}
-
-         </div>
+         <Paginator
+            currentPage={props.currentPage}
+            totalUsersCount={props.totalUsersCount}
+            pageSize={props.pageSize}
+            onPageChanget={props.onPageChanget}
+         />
          <ul className={classes.users__items}>
             {
                props.users.map((user) => {
@@ -68,7 +47,7 @@ const Users = (props) => {
                               </button>
                               :
                               <button
-                                 disabled={props.followingInProgress.some(id=> id === user.id)}
+                                 disabled={props.followingInProgress.some(id => id === user.id)}
                                  className={classes.users__button}
                                  onClick={() => props.follow(user.id)}>
                                  Follow
