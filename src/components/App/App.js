@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import './App.css';
 import HeaderContainer from '../Header/HeaderContainer';
@@ -15,6 +15,7 @@ import Login from '../Login/Login';
 import { initializeApp } from '../../redux/app-reducer';
 import Preloader from '../Preloader/Preloader';
 import { withRouter } from '../hoc/withRouter';
+import store from '../../redux/redux-store';
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
@@ -25,22 +26,22 @@ class App extends React.Component {
 
     return (
       <div className='page'>
-      <HeaderContainer />
-      <Navbar />
-      <div className='page__content'>
-        <Routes>
-          <Route path='/profile' element={<ProfileContainer />}>
-            <Route path=':userId' element={<ProfileContainer />} />
-          </Route>
-          <Route path='/dialogs/*' element={<MessageContainer />} />
-          <Route path='/news' element={<News />} />
-          <Route path='/music' element={<Music />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/users' element={<UsersContainer />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </div>
-    </div>);
+        <HeaderContainer />
+        <Navbar />
+        <div className='page__content'>
+          <Routes>
+            <Route path='/profile' element={<ProfileContainer />}>
+              <Route path=':userId' element={<ProfileContainer />} />
+            </Route>
+            <Route path='/dialogs/*' element={<MessageContainer />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/music' element={<Music />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/users' element={<UsersContainer />} />
+            <Route path='/login' element={<Login />} />
+          </Routes>
+        </div>
+      </div>);
   }
 }
 
@@ -50,44 +51,16 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App)
 
-
-// const App = () => {
-
-//   return (
-//     <div className='page'>
-//       <HeaderContainer />
-//       <Navbar />
-//       <div className='page__content'>
-//         <Routes>
-//           <Route path='/profile' element={<ProfileContainer />}>
-//             <Route path=":userId" element={<ProfileContainer />} />
-//           </Route>
-//           <Route path='/dialogs/*'
-//             element={<MessageContainer
-//             />}
-//           />
-//           <Route path='/news'
-//             element={<News />}
-//           />
-//           <Route path='/music'
-//             element={<Music />}
-//           />
-//           <Route path='/settings'
-//             element={<Settings />}
-//           />
-//           <Route path='/users'
-//             element={<UsersContainer />}
-//           />
-//           <Route path='/login'
-//             element={<Login />}
-//           />
-//         </Routes>
-//       </div>
-//     </div>
-//   )
-// }
+const AppMain = (props) => {
+  return <BrowserRouter>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  </BrowserRouter>
+}
+export default AppMain;
