@@ -5,6 +5,13 @@ import classes from './ProfileData.module.css';
 const ProfileData = (props) => {
    return (
       <section className={classes.ProfileData}>
+         {
+            props.isOwner && <button
+               className={classes.ProfileData__button}
+            onClick={props.goToEditMode}>
+            Редактировать
+            </button>
+         }
          <div>
             <b>Full Name: </b> {props.profile.fullName}
          </div>
