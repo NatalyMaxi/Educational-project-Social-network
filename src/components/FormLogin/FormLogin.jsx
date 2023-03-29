@@ -5,7 +5,6 @@ import Input from '../Input/Input';
 import { reqired } from '../../utils/validators/validator';
 
 const LoginForm = (props) => {
-
    return (
       <form className={classes.form} onSubmit={props.handleSubmit}>
          <Field
@@ -29,6 +28,17 @@ const LoginForm = (props) => {
                component={Input}
             /> remember me
          </div>
+         {
+            props.captchaUrl && <img src={props.captchaUrl} alt='captcha' />
+         }
+         {
+            props.captchaUrl && <Field
+               name={'captcha'}
+               component={Input}
+               validate={[reqired]}
+               placeholder='Symbols from image'
+            />
+         }
          {
             props.error && <div className={classes.formError}>{props.error}</div>
          }
