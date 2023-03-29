@@ -3,14 +3,15 @@ import classes from './ProfileInfo.module.css';
 import blackcat from '../../../images/blackCat-min.png';
 import Preloader from '../../Preloader/Preloader';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import ProfileData from '../ProfileData/ProfileData';
 
 const ProfileInfo = (props) => {
 
   const onMainPhotoSelected = (e) => {
     if (e.target.files.length) {
       props.savePhoto(e.target.files[0])
+    }
   }
-}
 
   if (!props.profile) {
     return <Preloader />
@@ -33,9 +34,10 @@ const ProfileInfo = (props) => {
         />
         {props.isOwner &&
           <input
-          type={'file'}
-          onChange={onMainPhotoSelected}
+            type={'file'}
+            onChange={onMainPhotoSelected}
           />}
+        <ProfileData profile={props.profile} />
         <ProfileStatus
           status={props.status}
           updateStatus={props.updateStatus}
