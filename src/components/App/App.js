@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import './App.css';
@@ -30,6 +30,7 @@ class App extends React.Component {
         <Navbar />
         <div className='page__content'>
           <Routes>
+            <Route path='/' element={<Navigate to="/profile" />} />
             <Route path='/profile' element={<ProfileContainer />}>
               <Route path=':userId' element={<ProfileContainer />} />
             </Route>
